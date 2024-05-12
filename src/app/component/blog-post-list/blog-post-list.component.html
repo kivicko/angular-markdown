@@ -1,0 +1,7 @@
+<h2>Blog Posts</h2>
+<ul>
+  <li *ngFor="let post of posts | async">
+    <a href="/{{ post.slug }}">{{ post.title }}</a>
+    <p>{{ post.author }} - {{ post.date | date }}</p>
+  </li>
+</ul>
