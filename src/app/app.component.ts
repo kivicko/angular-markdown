@@ -2,13 +2,16 @@ import { Component, Inject } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { BlogPostListComponent } from "./component/blog-post-list/blog-post-list.component";
+import { MyStoryComponent } from "./component/my-story/my-story.component";
+import { MyProjectsComponent } from "./component/my-projects/my-projects.component";
+import { FooterComponent } from "./component/footer/footer.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [CommonModule, RouterOutlet, BlogPostListComponent]
+  imports: [CommonModule, RouterOutlet, BlogPostListComponent, MyStoryComponent, MyProjectsComponent, FooterComponent]
 })
 export class AppComponent {
   title = 'blog-pure-ng';
