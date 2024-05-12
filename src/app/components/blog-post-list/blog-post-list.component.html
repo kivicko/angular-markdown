@@ -7,7 +7,7 @@
       My Blog
     </h3>
     <a
-      href="/blog"
+      routerLink="/blog"
       class="flex items-center pl-10 font-body italic text-green transition-colors hover:text-secondary dark:text-green-light dark:hover:text-secondary"
     >
       All posts
@@ -18,14 +18,16 @@
       />
     </a>
   </div>
+
   <div class="pt-8">
+    @for (post of [posts]; track $index) {
     <div class="border-b border-grey-lighter pb-8">
       <span
         class="mb-4 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green"
         >category</span
       >
       <a
-        href="/post"
+        routerLink="/post/{{ post.slug }}"
         class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary"
         >Quis hendrerit dolor magna eget est lorem ipsum dolor sit</a
       >
@@ -39,6 +41,7 @@
         </p>
       </div>
     </div>
+    }
     <div class="border-b border-grey-lighter pt-10 pb-8">
       <div class="flex items-center">
         <span
@@ -51,7 +54,7 @@
         >
       </div>
       <a
-        href="/post"
+        routerLink="/post"
         class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary"
         >Senectus et netus et malesuada fames ac turpis egestas integer</a
       >
@@ -71,7 +74,7 @@
         >category</span
       >
       <a
-        href="/post"
+        routerLink="/post"
         class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary"
         >Vulputate ut pharetra sit amet aliquam id diam maecenas ultricies</a
       >

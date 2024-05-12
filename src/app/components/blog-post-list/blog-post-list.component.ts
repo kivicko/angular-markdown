@@ -16,7 +16,7 @@ import { AsyncPipe, DatePipe, NgFor } from '@angular/common';
 })
 
 export class BlogPostListComponent {
-  posts: Observable<BlogPost[]> = this.blogPostService.getPosts();
+  public posts: Observable<BlogPost[]> = this.blogPostService.getPosts();
 
   constructor(private blogPostService: BlogPostService,
     private selectedPostService: SelectedPostService) { }

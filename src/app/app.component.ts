@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { BlogPostListComponent } from "./component/blog-post-list/blog-post-list.component";
-import { MyStoryComponent } from "./component/my-story/my-story.component";
-import { MyProjectsComponent } from "./component/my-projects/my-projects.component";
-import { FooterComponent } from "./component/footer/footer.component";
+import { BlogPostListComponent } from "./components/blog-post-list/blog-post-list.component";
+import { MyStoryComponent } from "./components/my-story/my-story.component";
+import { MyProjectsComponent } from "./components/project-list/my-projects.component";
+import { FooterComponent } from "./components/footer/footer.component";
 
 @Component({
   selector: 'app-root',
