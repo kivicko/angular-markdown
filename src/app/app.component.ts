@@ -5,18 +5,19 @@ import { BlogPostListComponent } from "./components/blog-post-list/blog-post-lis
 import { MyStoryComponent } from "./components/my-story/my-story.component";
 import { MyProjectsComponent } from "./components/project-list/my-projects.component";
 import { FooterComponent } from "./components/footer/footer.component";
+import { HomeComponent } from "./components/home/home.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [CommonModule, RouterOutlet, BlogPostListComponent, MyStoryComponent, MyProjectsComponent, FooterComponent]
+  imports: [CommonModule, RouterOutlet, BlogPostListComponent, MyStoryComponent, MyProjectsComponent, FooterComponent, HomeComponent]
 })
 export class AppComponent {
   title = 'blog-pure-ng';
   isMobileMenuOpen = false;
-  isDarkMode = true; // Initialize based on localStorage or preferences
+  isDarkMode = true;
   localStorage: Storage = null;
 
   constructor(@Inject(DOCUMENT) private document: Document) {

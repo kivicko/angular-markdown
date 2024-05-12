@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { BlogPost } from '../../model/blog-post.model';
 import { BlogPostService } from '../../service/blog-post.service';
 import { SelectedPostService } from '../../service/selected-post.service';
@@ -10,18 +9,24 @@ import { AsyncPipe, DatePipe, NgFor } from '@angular/common';
 @Component({
   selector: 'app-blog-post-list',
   standalone: true,
-  imports: [BlogPostComponent, RouterModule, DatePipe, NgFor, AsyncPipe], // Import the blog-post component
+  imports: [BlogPostComponent, RouterModule, DatePipe, NgFor, AsyncPipe],
   templateUrl: './blog-post-list.component.html',
   styleUrl: './blog-post-list.component.css'
 })
 
 export class BlogPostListComponent {
-  public posts: Observable<BlogPost[]> = this.blogPostService.getPosts();
+  public posts: BlogPost[];
 
   constructor(private blogPostService: BlogPostService,
-    private selectedPostService: SelectedPostService) { }
+    private selectedPostService: SelectedPostService) {
+
+    this.blogPostService.getPosts().subscribe(data => {
+      this.posts = data
+    });
+  }
 
   showPostDetails(post: BlogPost) {
+    console.log('selected post : ' + post)
     this.selectedPostService.setSelectedPost(post);
   }
 }
