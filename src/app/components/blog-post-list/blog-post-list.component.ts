@@ -26,7 +26,6 @@ export class BlogPostListComponent {
   }
 
   showPostDetails(post: BlogPost) {
-    console.log('selected post : ' + post)
     this.selectedPostService.setSelectedPost(post);
   }
 }
