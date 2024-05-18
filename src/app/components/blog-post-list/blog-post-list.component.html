@@ -24,24 +24,24 @@
     <div class="border-b border-grey-lighter pb-8">
       <span
         class="mb-4 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green"
-        >{{ post.category }}</span
+        >{{ post.filename }}</span
       >
       <a
-        routerLink="/post/{{ post.slug }}"
+        routerLink="/post/{{ post.filename }}"
         routerLinkActive="active-link"
         class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary"
-        >{{ post.title }}</a
+        >{{ post.filename }}</a
       >
       <div class="grid grid-cols-2 gap-2 items-center pt-4">
         <p class="pr-2 font-body font-light text-primary dark:text-white">
-          {{ post.excerpt }}
+          {{ post.filename }}
         </p>
 
         <p class="pr-2 font-body font-light text-primary dark:text-white">
-          {{ post.date | date }}
+          {{ post.filename | date }}
         </p>
         <p class="pr-2 font-body font-light text-primary dark:text-white">
-          {{ post.readLength }}
+          {{ post.filename }}
         </p>
       </div>
     </div>

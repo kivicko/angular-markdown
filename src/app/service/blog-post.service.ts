@@ -1,37 +1,66 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of, throwError } from 'rxjs';
 import { BlogPost } from '../model/blog-post.model';
+import { HttpClient } from '@angular/common/http'; // For fetching markdown content
+import { HttpClientModule } from '@angular/common/http';
+import * as yaml from 'js-yaml';
+import { BlogPostMetadata } from '../model/blog-post.metadata.model';
+import { MarkdownFile } from '../model/markdown-file.model';
 
-const blogPosts: BlogPost[] = [
-    {
-        title: 'Post 1 Title',
-        slug: 'first-page',
-        content: 'Content of post 1...',
-        author: 'John Doe',
-        date: new Date(),
-        readLength: "10 min.",
-        excerpt: "This is the excerpt of first post.",
-        category: "Category 1"
-    },
-    {
-        title: 'Post 2 Title',
-        slug: 'second-page',
-        content: 'Content of post 2...',
-        author: 'Jane Smith',
-        date: new Date(),
-        readLength: "5 min",
-        excerpt: "This is the excerp of second post",
-        category: "Category 1"
-    },
-];
 
 @Injectable({ providedIn: 'root' })
 export class BlogPostService {
-    getPosts(): Observable<BlogPost[]> {
-        return of(blogPosts);
+    private markdownFiles: MarkdownFile[] = __MARKDOWN_FILES__;
+    blogPosts: BlogPost[] = [];
+
+    constructor(private http: HttpClient) { }
+
+    getPosts(): Observable<MarkdownFile[]> {
+        return of(this.markdownFiles);
+
     }
 
-    getPost(slug: string): BlogPost {
-        return blogPosts.find(s => s.slug === slug);
+    getPost(slug: string): Observable<BlogPost> {
+        const url = `assets/posts/${slug}.md`;
+
+        return this.http.get(url, { responseType: 'text' }).pipe(
+            map(content => {
+                const parts = content.split(/\n---\n|\n\n---/);
+                const markdownContent = parts[1]?.trim() || '';
+
+                // Parse the YAML string if it exists
+                let metadata: BlogPostMetadata = { ...emptyPost.metadata };
+                try {
+                    const yamlString = parts[0]?.trim() || ''; // Handle potential missing YAML front matter
+                    if (yamlString) {
+                        metadata = yaml.load(yamlString) as BlogPostMetadata;
+                    }
+                } catch (e) {
+                    console.error('Error parsing YAML front matter:', e);
+                }
+
+                // Ensure combined object has the required 'metadata' property
+                return { metadata, content: markdownContent };
+            }),
+            catchError(error => {
+                console.error('Error fetching post content:', error);
+                return throwError(error); // Handle error appropriately
+            })
+        );
     }
 }
+
+
+const emptyPost: BlogPost = {
+    content: '',
+    metadata: {
+        readLength: 0,
+        excerpt: '',
+        title: '',
+        slug: '',
+        category: '',
+        content: '', // You might want to remove this property
+        author: '',
+        date: null,
+    },
+};
