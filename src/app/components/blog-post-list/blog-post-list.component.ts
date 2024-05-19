@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { BlogPost } from '../../model/blog-post.model';
 import { BlogPostService } from '../../service/blog-post.service';
-import { SelectedPostService } from '../../service/selected-post.service';
 import { BlogPostComponent } from '../blog-post/blog-post.component';
 import { RouterModule } from '@angular/router';
 import { AsyncPipe, DatePipe, NgFor } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { MarkdownFile } from '../../model/markdown-file.model';
 import { MarkdownComponent } from 'ngx-markdown';
 
 @Component({
@@ -22,19 +20,12 @@ import { MarkdownComponent } from 'ngx-markdown';
 export class BlogPostListComponent {
   public posts: BlogPost[];
 
-  constructor(private blogPostService: BlogPostService,
-    private selectedPostService: SelectedPostService) {
+  constructor(private blogPostService: BlogPostService) {
 
-    console.log('blogpostlist constructor 1');
     this.blogPostService.getPosts().subscribe(data => {
-
-      console.log('blogpostlist constructor 2' + data);
 
       this.posts = data
     });
   }
 
-  showPostDetails(post: BlogPost) {
-    this.selectedPostService.setSelectedPost(post);
-  }
 }

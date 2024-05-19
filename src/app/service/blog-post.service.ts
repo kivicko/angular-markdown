@@ -31,11 +31,14 @@ export class BlogPostService {
 
             // Ensure combined object has the required 'metadata' property
             return { metadata, content: markdownContent };
-        });
+        }),
+            catchError(error => {
+                console.error('Error fetching post content:', error);
+                return throwError(error); // Handle error appropriately
+            });
     }
 
     getPosts(): Observable<BlogPost[]> {
-        console.log("get posts on blog-post service")
         return of(this.blogPosts);
 
     }
@@ -71,7 +74,7 @@ export class BlogPostService {
 }
 
 
-const emptyPost: BlogPost = {
+export const emptyPost: BlogPost = {
     content: '',
     metadata: {
         readLength: 0,

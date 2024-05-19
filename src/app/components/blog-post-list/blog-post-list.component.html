@@ -32,16 +32,17 @@
         class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary"
         >{{ post.metadata.title }}</a
       >
-      <div class="grid grid-cols-2 gap-2 items-center pt-4">
+      <div class="grid grid-cols-1 gap-2 items-center pt-4">
         <p class="pr-2 font-body font-light text-primary dark:text-white">
           {{ post.metadata.excerpt }}
         </p>
-
+      </div>
+      <div class="grid grid-cols-2 gap-2 items-center pt-4">
         <p class="pr-2 font-body font-light text-primary dark:text-white">
-          {{ post.metadata.date | date }}
+          Release Date : {{ post.metadata.date | date }}
         </p>
         <p class="pr-2 font-body font-light text-primary dark:text-white">
-          {{ post.metadata.readLength }}
+          <b>{{ post.metadata.readLength }} </b>to read.
         </p>
       </div>
     </div>

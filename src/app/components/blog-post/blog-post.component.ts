@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { BlogPost } from '../../model/blog-post.model';
 import { DatePipe } from '@angular/common';
-import { SelectedPostService } from '../../service/selected-post.service';
 import { ActivatedRoute } from '@angular/router';
-import { BlogPostService } from '../../service/blog-post.service';
+import { BlogPostService, emptyPost } from '../../service/blog-post.service';
 import { BlogShareComponent } from "../blog-share/blog-share.component";
 import { HttpClientModule } from '@angular/common/http';
 import { MarkdownComponent } from 'ngx-markdown';
@@ -19,20 +18,12 @@ import { MarkdownComponent } from 'ngx-markdown';
 })
 
 export class BlogPostComponent {
-  selectedPost: BlogPost | null = null;
+  selectedPost: BlogPost;
 
-  constructor(private selectedPostService: SelectedPostService,
-    private blogPostService: BlogPostService,
-    private route: ActivatedRoute
-  ) {
-
-  }
+  constructor(private blogPostService: BlogPostService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // this.selectedPostService.selectedPost$.subscribe(
-    //   (post) => (this.selectedPost = post)
-    // );
-
     const slug: string = this.route.snapshot.paramMap.get('slug');
     this.blogPostService.getPost(slug).subscribe(
       (post: BlogPost) => {
@@ -40,11 +31,11 @@ export class BlogPostComponent {
       },
       (error) => {
         console.error('Error loading blog post:', error);
+        this.selectedPost = emptyPost
         // Handle error appropriately
       }
     );
 
-    console.log(this.selectedPost);
   }
 
 
