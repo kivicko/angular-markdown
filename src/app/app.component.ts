@@ -6,13 +6,14 @@ import { MyStoryComponent } from "./components/my-story/my-story.component";
 import { MyProjectsComponent } from "./components/project-list/my-projects.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HomeComponent } from "./components/home/home.component";
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [CommonModule, RouterOutlet, BlogPostListComponent, MyStoryComponent, MyProjectsComponent, FooterComponent, HomeComponent]
+  imports: [CommonModule, RouterOutlet, BlogPostListComponent, MyStoryComponent, MyProjectsComponent, FooterComponent, HomeComponent, MarkdownModule]
 })
 export class AppComponent {
   title = 'blog-pure-ng';

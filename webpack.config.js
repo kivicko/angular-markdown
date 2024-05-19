@@ -5,6 +5,7 @@ const fs = require('fs');
 function createMarkdownIndex(directory) {
   const files = fs.readdirSync(directory);
   const markdownFiles = files.filter(file => file.endsWith('.md'));
+  
   return markdownFiles.map(file => ({
     filename: file,
     content: fs.readFileSync(path.join(directory, file), 'utf-8')

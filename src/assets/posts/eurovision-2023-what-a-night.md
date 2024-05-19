@@ -1,11 +1,11 @@
 ---
-title: Post 1 Title
-slug: first-page
+title: Eurovision Song Contest 2023 A Triumphant Return to Ukraine (Kind Of)
+slug: eurovision-2023-what-a-night
 content: Content of post 1
 author: John Doe
 date: 01.05.2024
 readLength: 10 min
-excerpt: This is the excerpt of first post
+excerpt: The 67th edition of the Eurovision Song Contest, held in Liverpool, England, marked a bittersweet victory for Ukraine. While the country secured its seventh win with Loreens powerful ballad "Tattoo,"
 category: Category 1
 
 ---

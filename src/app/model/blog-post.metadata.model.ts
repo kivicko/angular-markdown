@@ -4,7 +4,6 @@ export interface BlogPostMetadata {
     title: string;
     slug: string;
     category: string;
-    content: string;
     author: string;
     date: Date;
 }

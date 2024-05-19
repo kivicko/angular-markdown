@@ -24,7 +24,9 @@
       <div
         class="prose prose max-w-none border-b border-grey-lighter py-8 dark:prose-dark sm:py-12"
       >
-        {{ selectedPost.content }}
+        <markdown ngPreserveWhitespaces>
+          {{ selectedPost.content }}
+        </markdown>
 
         <app-blog-share></app-blog-share>
       </div>

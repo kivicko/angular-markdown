@@ -1,10 +1,10 @@
 ---
 title: The Call of the Deep An Ocean Fishing Adventure
-slug: first-page
+slug: fishing-on-the-ocean
 author: John Doe
 date: 01.05.2024
 readLength: 10 min
-excerpt: This is the excerpt of first post
+excerpt: The rhythmic crash of waves against the hull, the salty spray kissing your face, and the ever-present anticipation of a tug on the line 
 category: Category 1
 ---
 

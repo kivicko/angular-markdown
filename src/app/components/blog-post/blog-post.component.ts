@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BlogPostService } from '../../service/blog-post.service';
 import { BlogShareComponent } from "../blog-share/blog-share.component";
 import { HttpClientModule } from '@angular/common/http';
+import { MarkdownComponent } from 'ngx-markdown';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
   standalone: true,
   templateUrl: './blog-post.component.html',
   styleUrl: './blog-post.component.css',
-  imports: [DatePipe, BlogShareComponent, HttpClientModule],
+  imports: [DatePipe, BlogShareComponent, HttpClientModule, MarkdownComponent],
   providers: [BlogPostService] // Provide BlogService here if not using providedIn: 'root'
 })
 
@@ -42,6 +43,8 @@ export class BlogPostComponent {
         // Handle error appropriately
       }
     );
+
+    console.log(this.selectedPost);
   }
 
 
