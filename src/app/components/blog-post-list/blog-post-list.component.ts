@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BlogPost } from '../../model/blog-post.model';
 import { BlogPostService } from '../../service/blog-post.service';
 import { BlogPostComponent } from '../blog-post/blog-post.component';
@@ -17,13 +17,14 @@ import { MarkdownComponent } from 'ngx-markdown';
 
 })
 
-export class BlogPostListComponent {
+export class BlogPostListComponent implements OnInit {
   public posts: BlogPost[];
 
-  constructor(private blogPostService: BlogPostService) {
+  constructor(private blogPostService: BlogPostService) { }
+
+  ngOnInit(): void {
 
     this.blogPostService.getPosts().subscribe(data => {
-
       this.posts = data
     });
   }
