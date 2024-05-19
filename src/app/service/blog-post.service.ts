@@ -13,7 +13,6 @@ export class BlogPostService {
     blogPosts: BlogPost[] = [];
 
     constructor(private http: HttpClient) {
-        console.log("on init of blog-post service.")
         this.blogPosts = this.markdownFiles.map(x => {
             const parts = x.content.split(/\n---\n|\n\n---/);
             const markdownContent = parts[1]?.trim() || '';
@@ -40,36 +39,11 @@ export class BlogPostService {
 
     getPosts(): Observable<BlogPost[]> {
         return of(this.blogPosts);
-
     }
 
     getPost(slug: string): Observable<BlogPost> {
-        const url = `assets/posts/${slug}.md`;
-
-        return this.http.get(url, { responseType: 'text' }).pipe(
-            map(content => {
-                const parts = content.split(/\n---\n|\n\n---/);
-                const markdownContent = parts[1]?.trim() || '';
-
-                // Parse the YAML string if it exists
-                let metadata: BlogPostMetadata = { ...emptyPost.metadata };
-                try {
-                    const yamlString = parts[0]?.trim() || ''; // Handle potential missing YAML front matter
-                    if (yamlString) {
-                        metadata = yaml.load(yamlString) as BlogPostMetadata;
-                    }
-                } catch (e) {
-                    console.error('Error parsing YAML front matter:', e);
-                }
-
-                // Ensure combined object has the required 'metadata' property
-                return { metadata, content: markdownContent };
-            }),
-            catchError(error => {
-                console.error('Error fetching post content:', error);
-                return throwError(error); // Handle error appropriately
-            })
-        );
+        const post = this.blogPosts.find(x => x.metadata.slug === slug)
+        return of(post);
     }
 }
 
