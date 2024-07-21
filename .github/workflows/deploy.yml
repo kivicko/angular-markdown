@@ -29,7 +29,7 @@ jobs:
           path: dist/blog-pure-ng
 
       - name: Deploy to VPS
-        uses: appleboy/ssh-action@v2
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
