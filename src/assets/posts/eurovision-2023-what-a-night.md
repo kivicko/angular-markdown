@@ -7,9 +7,7 @@ date: 01.05.2024
 readLength: 10 min
 excerpt: The 67th edition of the Eurovision Song Contest, held in Liverpool, England, marked a bittersweet victory for Ukraine. While the country secured its seventh win with Loreens powerful ballad "Tattoo,"
 category: Category 1
-
 ---
-
 
 ## Eurovision Song Contest 2023: A Triumphant Return to Ukraine (Kind Of)
 

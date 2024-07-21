@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .container {
-  max-width: 600px;
+  max-width: 1200px;
 
   @screen sm {
     max-width: 700px;
