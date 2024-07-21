@@ -37,7 +37,6 @@ jobs:
           script: |
             cd /var/www/kivicko
             rm -rf *  
-            git pull origin main
 
             # Download production artifact from previous step
             wget https://github.com/${{ github.repository }}/actions/artifacts/${{ github.run_id }}/downloads/production-files.zip
