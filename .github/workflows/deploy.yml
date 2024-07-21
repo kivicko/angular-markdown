@@ -23,11 +23,10 @@ jobs:
         run: npm run build --prod
 
       - name: Copy production files to deploy directory
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: production-files
           path: dist/blog-pure-ng
-
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -40,6 +39,6 @@ jobs:
             git pull origin main
 
             # Download production artifact from previous step
-            wget https://github.com/${{ github.repository }}/actions/artifacts/${{ github.run_id }}/downloads/production-files.zip
+            wget https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ github.artifact_id }}
             unzip production-files.zip
             # Additional deployment commands (e.g., restart server process)
