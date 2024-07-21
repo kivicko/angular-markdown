@@ -23,6 +23,7 @@ jobs:
         run: npm run build --prod
 
       - name: Copy production files to deploy directory
+        id: artifact-upload-step
         uses: actions/upload-artifact@v4
         with:
           name: production-files
@@ -39,7 +40,7 @@ jobs:
             git pull origin main
 
             # Download production artifact from previous step
+            wget https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}
 
-            wget ${{ github.artifact-url }}
             unzip production-files.zip
             # Additional deployment commands (e.g., restart server process)
