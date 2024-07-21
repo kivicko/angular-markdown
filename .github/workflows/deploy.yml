@@ -36,7 +36,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/kivicko
-            rm -rf * 
+            rm -rf *
             git pull origin main
 
             # Download production artifact from previous step
