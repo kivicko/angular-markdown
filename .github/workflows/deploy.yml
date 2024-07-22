@@ -38,3 +38,14 @@ jobs:
           local-dir: ./dist/blog-pure-ng/
           server-dir: /var/www/kivicko/
           dangerous-clean-slate: true
+
+      - name: update permission
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/kivicko
+            chown -R www-data:www-data *
+            chmod -R 755 *
