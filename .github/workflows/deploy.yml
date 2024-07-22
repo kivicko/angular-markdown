@@ -34,6 +34,11 @@ jobs:
         with:
           time: "6s"
 
+      - name: Download build files
+        uses: actions/download-artifact@v4
+        with:
+          path: /var/www/kivicko
+
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -47,7 +52,7 @@ jobs:
 
             # Download production artifact from previous step
             # wget https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}
-            wget ${{ steps.artifact-upload-step.outputs.artifact-url }}
+            # wget ${{ steps.artifact-upload-step.outputs.artifact-url }}
 
             unzip production-files.zip
             # Additional deployment commands (e.g., restart server process)
