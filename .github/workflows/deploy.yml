@@ -29,6 +29,16 @@ jobs:
           name: production-files
           path: dist/blog-pure-ng
 
+      - name: Sync Files
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /var/www/kivicko/
+          dangerous-clean-slate: true
+
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -36,6 +46,7 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            echo token : ${{ secrets.GITHUB_TOKEN }}
             cd /var/www/kivicko
             # rm -rf * 
             # git pull origin main
