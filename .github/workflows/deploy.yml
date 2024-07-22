@@ -29,16 +29,11 @@ jobs:
           name: production-files
           path: dist/blog-pure-ng
 
-      - name: Sleep for upload
-        uses: jakejarvis/wait-action@master
-        with:
-          time: "6s"
-
       - name: Download build files
         uses: actions/download-artifact@v4
         with:
           name: production-files
-          path: /var/www/kivicko
+          path: /var/www/kivicko/files
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
