@@ -38,22 +38,3 @@ jobs:
           local-dir: ./dist/
           server-dir: /var/www/kivicko/
           dangerous-clean-slate: true
-
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            echo token : ${{ secrets.GITHUB_TOKEN }}
-            cd /var/www/kivicko
-            # rm -rf * 
-            # git pull origin main
-            curl -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -L -o production-files.zip "${{ steps.artifact-upload-step.outputs.artifact-url }}" 
-            # Download production artifact from previous step
-            # wget https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}
-            # wget ${{ steps.artifact-upload-step.outputs.artifact-url }} 
-
-            unzip production-files.zip
-            # Additional deployment commands (e.g., restart server process)
