@@ -46,7 +46,8 @@ jobs:
             git pull origin main
 
             # Download production artifact from previous step
-            wget https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}
+            # wget https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}
+            wget ${{ steps.artifact-upload-step.outputs.artifact-id }}
 
             unzip production-files.zip
             # Additional deployment commands (e.g., restart server process)
