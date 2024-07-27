@@ -1,7 +1,6 @@
 <div
   id="main"
-  [ngClass]="{ 'mobile-menu-open': isMobileMenuOpen }"
-  [ngClass]="{ dark: isDarkMode }"
+  [ngClass]="{ 'mobile-menu-open': isMobileMenuOpen, dark: isDarkMode }"
 >
   <div class="container mx-auto">
     <div class="flex items-center justify-between py-6 lg:py-10">
@@ -18,14 +17,15 @@
       <div class="flex items-center lg:hidden">
         <i
           class="bx mr-8 cursor-pointer text-3xl text-primary dark:text-white bxs-sun"
-          [ngClass]="{ 'bxs-sun': isDarkMode }"
-          [ngClass]="{ 'bxs-moon': !isDarkMode }"
+          [ngClass]="{ 'bxs-sun': isDarkMode, 'bxs-moon': !isDarkMode }"
+          (click)="themeSwitch()"
         ></i>
 
         <svg
           width="24"
           height="15"
           xmlns="http://www.w3.org/2000/svg"
+          (click)="isMobileMenuOpen = !isMobileMenuOpen"
           class="fill-current text-primary dark:text-white"
         >
           <g fill-rule="evenodd">
@@ -85,8 +85,7 @@
             <i
               class="bx cursor-pointer text-3xl text-primary dark:text-white bxs-sun"
               (click)="themeSwitch()"
-              [ngClass]="{ 'bxs-sun': isDarkMode }"
-              [ngClass]="{ 'bxs-moon': !isDarkMode }"
+              [ngClass]="{ 'bxs-sun': isDarkMode, 'bxs-moon': !isDarkMode }"
             ></i>
           </li>
         </ul>
@@ -96,11 +95,12 @@
 
   <div
     class="pointer-events-none fixed inset-0 z-50 flex bg-black bg-opacity-80 opacity-0 transition-opacity lg:hidden"
+    [ngClass]="{ 'opacity-100 pointer-events-auto': isMobileMenuOpen }"
   >
-    <!-- :class="isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : ''" -->
     <div class="ml-auto w-2/3 bg-green p-4 md:w-1/3">
       <i
         class="bx bx-x absolute top-0 right-0 mt-4 mr-4 text-4xl text-white"
+        (click)="isMobileMenuOpen = !isMobileMenuOpen"
       ></i>
       <ul class="mt-8 flex flex-col">
         <li class="">

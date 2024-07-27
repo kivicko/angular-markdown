@@ -44,6 +44,7 @@ export class AppComponent {
   }
 
   themeSwitch() {
+    console.log('selam')
     if (!this.localStorage) {
       return;
     }
