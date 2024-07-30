@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { BlogPostListComponent } from "./components/blog-post-list/blog-post-list.component";
 import { MyStoryComponent } from "./components/my-story/my-story.component";
 import { MyProjectsComponent } from "./components/project-list/my-projects.component";
@@ -15,15 +15,24 @@ import { MarkdownModule } from 'ngx-markdown';
   styleUrl: './app.component.css',
   imports: [CommonModule, RouterOutlet, BlogPostListComponent, MyStoryComponent, MyProjectsComponent, FooterComponent, HomeComponent, MarkdownModule]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'blog-pure-ng';
   isMobileMenuOpen = false;
   isDarkMode = true;
   localStorage: Storage = null;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
     this.localStorage = document.defaultView?.localStorage;
     this.themeInit();
+  }
+
+  ngOnInit(): void {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0)
+    });
   }
 
   themeInit() {
