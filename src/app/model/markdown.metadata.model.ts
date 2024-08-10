@@ -1,4 +1,4 @@
-export interface BlogPostMetadata {
+export interface MarkdownMetadata {
     readLength: any;
     excerpt: any;
     title: string;

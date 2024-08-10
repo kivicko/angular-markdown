@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogPostService } from '../../service/blog-post.service';
-import { BlogPost } from '../../model/blog-post.model';
+import { ContentService } from '../../service/content.service';
+import { MarkdownEntry } from '../../model/markdown.entry.model';
 import { BlogPostListComponent } from '../blog-post-list/blog-post-list.component';
 
 @Component({
@@ -9,13 +9,13 @@ import { BlogPostListComponent } from '../blog-post-list/blog-post-list.componen
   imports: [BlogPostListComponent],
   templateUrl: './blog-page.component.html',
   styleUrl: './blog-page.component.css',
-  providers: [BlogPostService]
+  providers: [ContentService]
 })
 export class BlogPageComponent implements OnInit {
 
-  posts: BlogPost[];
+  posts: MarkdownEntry[];
 
-  constructor(private blogPostService: BlogPostService) { }
+  constructor(private blogPostService: ContentService) { }
 
   ngOnInit(): void {
     this.blogPostService.getPosts().subscribe(data => {

@@ -3,7 +3,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { BlogPostListComponent } from "./components/blog-post-list/blog-post-list.component";
 import { MyStoryComponent } from "./components/my-story/my-story.component";
-import { MyProjectsComponent } from "./components/project-list/my-projects.component";
+import { ProjectListComponent } from "./components/project-list/project-list.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HomeComponent } from "./components/home/home.component";
 import { MarkdownModule } from 'ngx-markdown';
@@ -13,7 +13,7 @@ import { MarkdownModule } from 'ngx-markdown';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [CommonModule, RouterOutlet, BlogPostListComponent, MyStoryComponent, MyProjectsComponent, FooterComponent, HomeComponent, MarkdownModule]
+  imports: [CommonModule, RouterOutlet, BlogPostListComponent, MyStoryComponent, ProjectListComponent, FooterComponent, HomeComponent, MarkdownModule]
 })
 export class AppComponent implements OnInit {
   title = 'blog-pure-ng';

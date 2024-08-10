@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { BlogPost } from '../../model/blog-post.model';
+import { MarkdownEntry } from '../../model/markdown.entry.model';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { BlogPostService, emptyPost } from '../../service/blog-post.service';
+import { ContentService, emptyPost } from '../../service/content.service';
 import { BlogShareComponent } from "../blog-share/blog-share.component";
 import { HttpClientModule } from '@angular/common/http';
 import { MarkdownComponent } from 'ngx-markdown';
@@ -14,19 +14,19 @@ import { MarkdownComponent } from 'ngx-markdown';
   templateUrl: './blog-post.component.html',
   styleUrl: './blog-post.component.css',
   imports: [DatePipe, BlogShareComponent, HttpClientModule, MarkdownComponent],
-  providers: [BlogPostService] // Provide BlogService here if not using providedIn: 'root'
+  providers: [ContentService] // Provide BlogService here if not using providedIn: 'root'
 })
 
 export class BlogPostComponent {
-  selectedPost: BlogPost;
+  selectedPost: MarkdownEntry;
 
-  constructor(private blogPostService: BlogPostService,
+  constructor(private blogPostService: ContentService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
     const slug: string = this.route.snapshot.paramMap.get('slug');
     this.blogPostService.getPost(slug).subscribe(
-      (post: BlogPost) => {
+      (post: MarkdownEntry) => {
         this.selectedPost = post;
       },
       (error) => {

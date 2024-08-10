@@ -1,0 +1,36 @@
+<div class="pb-16 lg:pb-20">
+  <div class="flex items-center pb-6">
+    <img src="/assets/img/icon-project.png" alt="icon story" />
+    <h3
+      class="ml-3 font-body text-2xl font-semibold text-primary dark:text-white"
+    >
+      My Projects
+    </h3>
+  </div>
+  <div>
+    @for (project of projects; track $index) {
+    <a
+      href="/qwe"
+      class="mb-6 flex items-center justify-between border border-grey-lighter px-4 py-4 sm:px-6"
+    >
+      <span class="w-9/10 pr-8">
+        <h4
+          class="font-body text-lg font-semibold text-primary dark:text-white"
+        >
+          {{ project.metadata.title }}
+        </h4>
+        <p class="font-body font-light text-primary dark:text-white">
+          {{ project.metadata.excerpt }}
+        </p>
+      </span>
+      <span class="w-1/10">
+        <img
+          src="/assets/img/chevron-right.png"
+          class="mx-auto"
+          alt="chevron right"
+        />
+      </span>
+    </a>
+    }
+  </div>
+</div>

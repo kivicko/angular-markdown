@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogPost } from '../../model/blog-post.model';
-import { BlogPostService } from '../../service/blog-post.service';
+import { MarkdownEntry } from '../../model/markdown.entry.model';
+import { ContentService } from '../../service/content.service';
 import { BlogPostComponent } from '../blog-post/blog-post.component';
 import { RouterModule } from '@angular/router';
 import { AsyncPipe, DatePipe, NgFor } from '@angular/common';
@@ -13,14 +13,14 @@ import { MarkdownComponent } from 'ngx-markdown';
   imports: [BlogPostComponent, RouterModule, DatePipe, NgFor, AsyncPipe, HttpClientModule, MarkdownComponent],
   templateUrl: './blog-post-list.component.html',
   styleUrl: './blog-post-list.component.css',
-  providers: [BlogPostService] // Provide BlogService here if not using providedIn: 'root'
+  providers: [ContentService] // Provide BlogService here if not using providedIn: 'root'
 
 })
 
 export class BlogPostListComponent implements OnInit {
-  public posts: BlogPost[];
+  public posts: MarkdownEntry[];
 
-  constructor(private blogPostService: BlogPostService) { }
+  constructor(private blogPostService: ContentService) { }
 
   ngOnInit(): void {
 
