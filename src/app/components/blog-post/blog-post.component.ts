@@ -18,20 +18,30 @@ import { MarkdownComponent } from 'ngx-markdown';
 })
 
 export class BlogPostComponent {
-  selectedPost: MarkdownEntry;
+  selectedContent: MarkdownEntry;
 
   constructor(private blogPostService: ContentService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
     const slug: string = this.route.snapshot.paramMap.get('slug');
-    this.blogPostService.getPost(slug).subscribe(
-      (post: MarkdownEntry) => {
-        this.selectedPost = post;
+    const pathSegment = this.route.snapshot.url[0].path;
+
+    let contentObservable;
+
+    if (pathSegment === 'project') {
+      contentObservable = this.blogPostService.getProject(slug);
+    } else {
+      contentObservable = this.blogPostService.getPost(slug);
+    }
+
+    contentObservable.subscribe(
+      (content: MarkdownEntry) => {
+        this.selectedContent = content;
       },
       (error) => {
-        console.error('Error loading blog post:', error);
-        this.selectedPost = emptyPost
+        console.error(`Error loading content for ${pathSegment}:`, error);
+        this.selectedContent = emptyPost
         // Handle error appropriately
       }
     );

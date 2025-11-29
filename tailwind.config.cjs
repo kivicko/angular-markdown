@@ -140,6 +140,9 @@ module.exports = {
         dark: {
           css: {
             color: theme("colors.white"),
+            "strong, b": {
+              color: theme("colors.white"),
+            },
             a: {
               color: theme("colors.secondary"),
               "&:hover": {

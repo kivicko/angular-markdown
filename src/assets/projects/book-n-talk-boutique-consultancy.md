@@ -1,21 +1,21 @@
 ---
-title: Say Hello to Book N Talk v0.1: Your Boutique Consultancy Hub
+title: BookNTalk v0.1 
 slug: book-n-talk-boutique-consultancy
 author: Kivilcim
-date: 28.11.2025
+date: 29.11.2025
 readLength: 5 min
 excerpt: A website that born from actual needs, designed as a single use, but slowly become marketplace for professinal consultants and mentors.
 category: BookNTalk
 ---
 
-## Say Hello to Book N Talk v0.1: Your Boutique Consultancy Hub
+## Say Hello to Book N Talk v0.1 Your Boutique Consultancy Hub
 
 Let me tell you the story of how Book N Talk came to life.
 
 It all started with my wife. She was happily using an old web app called Superpeer for her consultancy work. It was perfect: It let her get paid online while sharing her knowledge with clients via video calls. Then, the app was sold and eventually shut down. Poof! Gone.
 
 And that's where the idea for Book N Talk was born. I thought: 
-> "Hey, why not build a better one?"
+> Hey, why not build a better one?
 
 The app, which you can find at [bookntalk.com](https://bookntalk.com), is built on that same core idea:
 

@@ -9,6 +9,7 @@ import { UsesPageComponent } from './components/uses-page/uses-page.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'post/:slug', component: BlogPostComponent },
+    { path: 'project/:slug', component: BlogPostComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'blog', component: BlogPageComponent },
     { path: 'uses', component: UsesPageComponent },
