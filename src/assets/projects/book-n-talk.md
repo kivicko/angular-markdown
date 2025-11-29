@@ -4,7 +4,7 @@ slug: book-n-talk-boutique-consultancy
 author: Kivilcim
 date: 28.11.2025
 readLength: 5 min
-excerpt: A website that born from actual needs, designed as a single use, but slowly become marketplace for professinal consultants & mentors.
+excerpt: A website that born from actual needs, designed as a single use, but slowly become marketplace for professinal consultants and mentors.
 category: BookNTalk
 ---
 
