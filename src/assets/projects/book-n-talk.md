@@ -2,10 +2,10 @@
 title: Say Hello to Book N Talk v0.1: Your Boutique Consultancy Hub
 slug: book-n-talk-boutique-consultancy
 author: Kivilcim
-date: "28.11.2025"
+date: 28.11.2025
 readLength: 5 min
 excerpt: A website that born from actual needs, designed as a single use, but slowly become marketplace for professinal consultants & mentors.
-category: by-kivilcim
+category: BookNTalk
 ---
 
 ## Say Hello to Book N Talk v0.1: Your Boutique Consultancy Hub
